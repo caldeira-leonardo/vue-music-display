@@ -39,21 +39,6 @@ import 'primeicons/primeicons.css'
 
 const app = createApp(App)
 
-app.use(PrimeVue, {
-  riple: true,
-  theme: {
-    preset: MainTheme,
-    options: {
-      darkModeSelector: 'light'
-    }
-  },
-  locale: {
-    dateFormat: 'dd/mm/yy'
-  }
-})
-app.use(router)
-app.use(ToastService)
-
 // ----------- GLOBAL COMPONENTS DECLARATIONS -----------
 app.component('TheAccordion', Accordion)
 app.component('AccordionPanel', AccordionPanel)
@@ -85,6 +70,19 @@ app.directive('styleclass', StyleClass)
 app.directive('tooltip', Tooltip)
 
 app.use(createPinia())
+app.use(PrimeVue, {
+  riple: true,
+  theme: {
+    preset: MainTheme,
+    options: {
+      darkModeSelector: 'light'
+    }
+  },
+  locale: {
+    dateFormat: 'dd/mm/yy'
+  }
+})
 app.use(router)
+app.use(ToastService)
 
 app.mount('#app')
