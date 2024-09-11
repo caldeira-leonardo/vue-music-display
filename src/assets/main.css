@@ -1,0 +1,77 @@
+:root {
+  --customDefaultBlack: #333333;
+  --customDefaultWhite: #ffffff;
+
+  --customWhiteAntiFlash: #f1f1f5;
+
+  --customGrayLighter: #f2f2f2;
+  --customGrayLight: #e0e0e0;
+  --customGray: #bcbcbc;
+  --customGrayMedium: #909090;
+  --customGrayDark: #707070;
+  --customGrayDarker: #404040;
+  --customGrayCloud: #aeb8cc;
+  --customGrayDarkCloud: #96a7bf;
+
+  --customSuccess: #42c0b6;
+  --customError: #f57c7c;
+  --customWarning: #ff7e36;
+
+  --customBackground: #fdfdfd;
+  --customBackgroundElavated: #dddddd;
+  --customBackgroundItem: #f6f6f6;
+
+  --customPrimary: #5296f6;
+  --customPrimaryLight: #abceff;
+
+  --customSecondary: #20a096;
+
+  --customtertiary: #00a900;
+
+  --customRed: #f03d3e;
+  --customRedLight: #f9d7d8;
+
+  --customYellow: #ff9009;
+
+  --customGreen: #23a566;
+
+  --statusAccepted: #23a566;
+  --statusFinished: #5296f6;
+  --statusDelivered: #5296f6;
+  --statusStarted: #5296f6;
+  --statusRejected: #f03d3e;
+  --statusPlanning: #ff9009;
+  --statusUnstarted: #ff7e36;
+  --statusUnscheduled: #707070;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 14px;
+}
+
+a {
+  cursor: pointer;
+}
