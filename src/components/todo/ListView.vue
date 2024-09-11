@@ -18,10 +18,19 @@ watch(tasks, () => {
 
 <template>
   <div :class="`${props.class}`" class="flex flex-col">
-    <div v-if="!showTodoList.value">
-      <TheButton label="Todo's" :onclick="(showTodoList = true)" />
+    <div v-if="showTodoList === false">
+      <TheButton label="Todo's" :onclick="() => (showTodoList = true)" />
     </div>
-    <ThePanel v-else header="Tarefas">
+    <ThePanel v-else>
+      <template #header>
+        <div class="flex justify-between w-full items-center">
+          <h1>Tarefas</h1>
+          <i
+            class="pi pi-times text-red-600 cursor-pointer"
+            :onclick="() => (showTodoList = false)"
+          />
+        </div>
+      </template>
       <div class="flex flex-col gap-4">
         <div v-for="task in tasks" :key="task.id" class="flex items-center">
           <TheCheckbox
