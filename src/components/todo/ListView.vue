@@ -21,9 +21,17 @@ watch(tasks, () => {
     <div v-if="showTodoList === false">
       <TheButton label="Todo's" :onclick="() => (showTodoList = true)" />
     </div>
-    <ThePanel v-else class="min-w-40 max-w-60 !break-words">
+    <ThePanel
+      v-else
+      class="min-w-40 max-w-60 overflow-hidden"
+      :pt="{
+        content: {
+          class: '!p-0 '
+        }
+      }"
+    >
       <template #header>
-        <div class="flex justify-between w-full items-center !break-words">
+        <div class="flex justify-between w-full items-center">
           <h1>Tarefas</h1>
           <i
             class="pi pi-times text-red-600 cursor-pointer"
@@ -31,18 +39,24 @@ watch(tasks, () => {
           />
         </div>
       </template>
-      <div class="flex flex-col gap-4 !break-words">
-        <div v-for="task in tasks" :key="task.id" class="flex items-center !break-words">
+      <div class="flex flex-col gap-4 overflow-y-auto overflow-x-hidden max-h-80 py-4 pl-4">
+        <div v-for="task in tasks" :key="task.id" class="flex items-center">
           <TheCheckbox
             v-model="selectedValues"
             :value="task.id"
             @click="() => handleComplete(task.id)"
           />
-          <h1 :class="task.isCompleted ? 'line-through' : ''" class="!mx-2 !break-words">
+          <h1
+            :class="task.isCompleted ? 'line-through' : ''"
+            class="!mx-2 truncate"
+            v-tooltip.top="{
+              value: task.message.length >= 13 ? task.message : ''
+            }"
+          >
             {{ task.message }}
           </h1>
           <i
-            class="pi pi-trash text-red-600 cursor-pointer"
+            class="pi pi-trash text-red-600 cursor-pointer !mr-2"
             :onclick="() => handleDelete(task.id)"
           />
         </div>
