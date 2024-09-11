@@ -1,72 +1,76 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { ref, watch, watchEffect, reactive, computed } from 'vue'
+import { useToast } from 'primevue/usetoast'
+
+const sum = computed(() => Number(counter?.value) + Number(multiple?.value))
+const counter = ref(0)
+const multiple = ref(0)
+const validations = reactive({
+  isPrime: false
+})
+
+const toast = useToast()
+
+function isPrimeNumber(num) {
+  if (num <= 1) return false
+  if (num <= 3) return true
+
+  if (num % 2 === 0 || num % 3 === 0) return false
+
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) return false
+  }
+
+  return true
+}
+
+const show = (counter, multiple) => {
+  toast.add({
+    severity: 'success',
+    summary: 'Multiplo encontrado',
+    detail: `${counter} é multiplo de ${multiple}`,
+    life: 3000
+  })
+}
+
+function showMultiple() {
+  if (counter.value > 0 && counter.value % multiple.value === 0) {
+    show(counter.value, multiple.value)
+  }
+}
+
+watch(counter, () => {
+  validations.isPrime = isPrimeNumber(counter.value)
+})
+
+watchEffect(showMultiple)
 </script>
 
 <template>
-  Hello World
-  <RouterView />
+  <div class="flex gap-10 p-20">
+    <div class="flex flex-col items-center">
+      <div class="flex">
+        <TheButton label="-" :onclick="() => counter--" />
+        <h1 class="mb-4 text-4xl font-extrabold w-60 flex justify-center">
+          Contador: {{ counter }}
+        </h1>
+        <TheButton label="+" :onclick="() => counter++" />
+      </div>
+
+      <h2>Número primo: {{ !!validations.isPrime ? 'Sim' : 'Não' }}</h2>
+    </div>
+
+    <FloatLabel>
+      <InputText if="Multiplo" v-model="multiple" />
+      <label for="Multiplo">Multiplo</label>
+    </FloatLabel>
+
+    <h1 class="text-2xl font-extrabold w-60 flex justify-center !w-[390px]">
+      A soma dos valores é de:
+      <span class="flex !ml-4">{{ sum }}</span>
+    </h1>
+  </div>
+  <TheToast />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+<style scoped></style>
