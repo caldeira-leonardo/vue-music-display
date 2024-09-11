@@ -1,6 +1,4 @@
-// import accordion from '@primevue/themes/nora/accordion'
 import Nora from '@primevue/themes/nora'
-// ... imports of other component tokens
 
 export default {
   ...Nora,

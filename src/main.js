@@ -16,14 +16,17 @@ import BlockUI from 'primevue/blockui'
 import Button from 'primevue/button'
 import Breadcrumb from 'primevue/breadcrumb'
 import Card from 'primevue/card'
+import Checkbox from 'primevue/checkbox'
 import Chip from 'primevue/chip'
 import DatePicker from 'primevue/datepicker'
 import FileUpload from 'primevue/fileupload'
 import FloatLabel from 'primevue/floatlabel'
 import Image from 'primevue/image'
-import InputText from 'primevue/inputtext'
-import InputOtp from 'primevue/inputotp'
+import InputGroupAddon from 'primevue/inputgroupaddon'
+import InputGroup from 'primevue/inputgroup'
 import InputMask from 'primevue/inputmask'
+import InputOtp from 'primevue/inputotp'
+import InputText from 'primevue/inputtext'
 import Panel from 'primevue/panel'
 import PrimeVue from 'primevue/config'
 import ProgressBar from 'primevue/progressbar'
@@ -49,11 +52,14 @@ app.component('BlockUI', BlockUI)
 app.component('TheButton', Button)
 app.component('TheBreadcrumb', Breadcrumb)
 app.component('TheCard', Card)
+app.component('TheCheckbox', Checkbox)
 app.component('TheChip', Chip)
 app.component('DatePicker', DatePicker)
 app.component('FileUpload', FileUpload)
 app.component('FloatLabel', FloatLabel)
 app.component('TheImage', Image)
+app.component('InputGroupAddon', InputGroupAddon)
+app.component('InputGroup', InputGroup)
 app.component('InputMask', InputMask)
 app.component('InputOtp', InputOtp)
 app.component('InputText', InputText)

@@ -1,3 +1,7 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 @layer tailwind-base {
   @tailwind base;
 }
@@ -60,6 +64,11 @@
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;
+}
+
+#app {
+  height: 100vh;
+  overflow: auto;
 }
 
 body {
