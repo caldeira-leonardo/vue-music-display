@@ -21,9 +21,9 @@ watch(tasks, () => {
     <div v-if="showTodoList === false">
       <TheButton label="Todo's" :onclick="() => (showTodoList = true)" />
     </div>
-    <ThePanel v-else>
+    <ThePanel v-else class="min-w-40 max-w-60 !break-words">
       <template #header>
-        <div class="flex justify-between w-full items-center">
+        <div class="flex justify-between w-full items-center !break-words">
           <h1>Tarefas</h1>
           <i
             class="pi pi-times text-red-600 cursor-pointer"
@@ -31,14 +31,14 @@ watch(tasks, () => {
           />
         </div>
       </template>
-      <div class="flex flex-col gap-4">
-        <div v-for="task in tasks" :key="task.id" class="flex items-center">
+      <div class="flex flex-col gap-4 !break-words">
+        <div v-for="task in tasks" :key="task.id" class="flex items-center !break-words">
           <TheCheckbox
             v-model="selectedValues"
             :value="task.id"
             @click="() => handleComplete(task.id)"
           />
-          <h1 :class="task.isCompleted ? 'line-through' : ''" class="!mx-2">
+          <h1 :class="task.isCompleted ? 'line-through' : ''" class="!mx-2 !break-words">
             {{ task.message }}
           </h1>
           <i

@@ -37,7 +37,7 @@ function addTask() {
 
 <template>
   <div class="flex items-center justify-around !h-full flex-col">
-    <h1 class="mb-4 text-4xl font-extrabold flex justify-center !mb-20 font-emerald-500">
+    <h1 class="mb-4 text-4xl font-extrabold flex justify-center !mb-20">
       Adicione abaixo as tarefas do dia
     </h1>
 
