@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  linkActiveClass: 'active-route',
   routes: [
     {
       path: '/',
@@ -18,10 +19,20 @@ const router = createRouter({
       name: 'todo',
       component: () => import('@/views/TodoView.vue')
     },
+
     {
-      path: '/music',
-      name: 'music',
-      component: () => import('@/views/HomeView.vue')
+      //GAME CHANGER
+      path: '/musicDetails/:id',
+      name: 'music.details',
+      component: () => import('@/views/ArtistView.vue'),
+      props: (route) => ({ ...route.params, id: parseInt(route.params.id) }),
+      children: [
+        {
+          path: 'musics',
+          name: 'musics',
+          component: () => import('@/views/ConterView.vue')
+        }
+      ]
     }
   ]
 })

@@ -1,10 +1,11 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
+const router = useRoute()
 </script>
 
 <template>
   <TheToast />
-  <RouterView />
+  <RouterView :key="router.path" />
 </template>
 
 <style scoped></style>

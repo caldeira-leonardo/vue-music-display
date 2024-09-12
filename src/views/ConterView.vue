@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, watchEffect, reactive, computed } from 'vue'
 import { useToast } from 'primevue/usetoast'
+import { useRouter } from 'vue-router'
 
 const sum = computed(() => Number(counter?.value) + Number(multiple?.value))
 const counter = ref(0)
@@ -9,6 +10,7 @@ const validations = reactive({
   isPrime: false
 })
 
+const route = useRouter()
 const toast = useToast()
 
 function isPrimeNumber(num) {
@@ -48,12 +50,21 @@ watchEffect(showMultiple)
 
 <template>
   <div class="flex gap-10 p-20">
+    <TheButton label="Voltar" :onclick="() => route.back()" />
     <div class="flex flex-col items-center">
       <div class="flex">
         <TheButton label="-" :onclick="() => counter--" />
-        <h1 class="mb-4 text-4xl font-extrabold w-60 flex justify-center">
-          Contador: {{ counter }}
-        </h1>
+        <RouterLink
+          :to="{
+            //GAME CHANGER
+            name: 'music.details',
+            params: { id: '123321123' }
+          }"
+        >
+          <h1 class="mb-4 text-4xl font-extrabold w-60 flex justify-center">
+            Contador: {{ counter }}
+          </h1>
+        </RouterLink>
         <TheButton label="+" :onclick="() => counter++" />
       </div>
 
